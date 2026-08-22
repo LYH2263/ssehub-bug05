@@ -10,7 +10,7 @@ import (
 func (h *Hub) Fanout(ctx context.Context, room, name string, data []byte) (event.Event, error) {
 	ev, err := h.OpenRoom(room).Publish(ctx, name, data)
 	if err != nil {
-		return ev, fmt.Errorf("fanout: %v", err)
+		return ev, fmt.Errorf("fanout: %w", err)
 	}
 	return ev, nil
 }
